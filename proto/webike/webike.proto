@@ -1,0 +1,37 @@
+syntax="proto3";
+
+package user;
+
+option go_package = "sm8ta.webike.v1;webikev1";
+
+service UserService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+service BikeService {
+    rpc GetBikes(GetBikesRequest) returns(GetBikesResponse);
+}
+
+message GetUserRequest {
+    string user_id = 1;
+}
+
+message GetUserResponse {
+    bool exists = 1;
+    string user_id = 2;
+    string name = 3; 
+}
+
+message Bike {
+    string bike_id = 1;
+    string model = 2;
+    int32 mileage = 3;
+}
+
+message GetBikesRequest {
+    string user_id = 1;
+}
+
+message GetBikesResponse {
+    repeated Bike bikes = 1;
+}
